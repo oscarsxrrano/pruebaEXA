@@ -1,6 +1,11 @@
 plugins {
     kotlin("jvm") version "1.9.0"
+    id("org.jetbrains.dokka") version "1.9.10"
     application
+}
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(project.layout.buildDirectory.dir("dokka"))
 }
 
 group = "org.example"
@@ -12,6 +17,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.9.10")
 }
 
 tasks.test {
